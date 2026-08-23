@@ -1,0 +1,287 @@
+/* ============================================================
+   OVERLAY
+   ============================================================ */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(26, 29, 31, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  z-index: 100;
+  animation: overlayFadeIn var(--transition-base) ease;
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   MODAL SURFACE
+   ------------------------------------------------------------
+   Reuses the same surface color, border, radius, and shadow
+   tokens as the rest of the site so it reads as part of the
+   same design system, just scaled up.
+   ============================================================ */
+.modal {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  height: 85vh;
+  max-width: 900px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  animation: modalIn var(--transition-base) ease;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ============================================================
+   HEADER (fixed — does not scroll with the content)
+   ============================================================ */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--accent);
+  background-color: var(--accent-soft);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+}
+
+.closeButton {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  color: var(--secondary-text);
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  transition: background-color var(--transition-fast), color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.closeButton:hover {
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.closeIcon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ============================================================
+   SCROLLABLE BODY
+   ============================================================ */
+.body {
+  overflow-y: auto;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.heroImageWrapper {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background-color: var(--surface-muted);
+  aspect-ratio: 16 / 9;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.sectionHeading {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+
+.overview {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.paragraph {
+  font-size: 0.95rem;
+  color: var(--secondary-text);
+  line-height: 1.75;
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.featureItem {
+  position: relative;
+  padding-left: 1.2rem;
+  font-size: 0.95rem;
+  color: var(--secondary-text);
+  line-height: 1.6;
+}
+
+.featureItem::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+/* ---- Screenshot gallery ---- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+}
+
+.galleryImageWrapper {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background-color: var(--surface-muted);
+  aspect-ratio: 4 / 3;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- Links + PDFs (rendered as button rows) ---- */
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.linkButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  background-color: var(--accent-soft);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.linkButton:hover {
+  background-color: var(--surface);
+  border-color: var(--accent);
+}
+
+.linkButtonIcon {
+  width: 14px;
+  height: 14px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .modal {
+    width: 92vw;
+    height: 88vh;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Small margin around the modal so the overlay is still visible,
+     while the modal itself takes up nearly the whole screen. */
+  .overlay {
+    padding: var(--space-xs);
+  }
+
+  .modal {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    border-radius: var(--radius-sm);
+  }
+
+  .header {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .body {
+    padding: var(--space-md);
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+}

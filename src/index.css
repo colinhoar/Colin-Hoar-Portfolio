@@ -1,0 +1,153 @@
+/* ============================================================
+   GLOBAL DESIGN TOKENS
+   ------------------------------------------------------------
+   Every color, spacing, and radius value used across the site
+   is defined once here. To re-theme the entire portfolio,
+   change the values in this block only.
+   ============================================================ */
+:root {
+  /* Color palette — neutral surface, dark text, one muted accent */
+  --background: #fafaf9;      /* page background */
+  --surface: #ffffff;         /* card / panel background */
+  --surface-muted: #f3f2f0;   /* alternate section background (Interests) */
+  --text: #1a1d1f;            /* primary text */
+  --secondary-text: #5b6168;  /* muted / supporting text */
+  --accent: #3d5a80;          /* single muted accent color (slate blue) */
+  --accent-soft: #e8edf3;     /* light accent tint for badges/tags */
+  --border: #e4e2df;          /* hairline borders */
+
+  /* Radius + shadow */
+  --radius-sm: 10px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 2px rgba(20, 20, 20, 0.04), 0 1px 1px rgba(20, 20, 20, 0.03);
+  --shadow-md: 0 6px 16px rgba(20, 20, 20, 0.06), 0 2px 4px rgba(20, 20, 20, 0.04);
+
+  /* Layout */
+  --content-width: 1140px;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  /* Typography */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+
+  /* Motion */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+
+  color-scheme: light;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+
+/* Consistent, visible focus ring for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Utility class for content that should be available to screen
+   readers but visually hidden (used sparingly across components) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Respect users who have requested reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   SHARED LAYOUT UTILITY
+   ------------------------------------------------------------
+   Every section reuses this class to keep a consistent max width
+   and horizontal padding across the whole page.
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 var(--space-sm);
+  }
+}
