@@ -1,4 +1,4 @@
-import profilePhoto from "../assets/profile/Hoar033.JPG";
+import profilePhoto from "../assets/profile/Hoar_033.jpg";
 
 export interface Profile {
   name: string;
