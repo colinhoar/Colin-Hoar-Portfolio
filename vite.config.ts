@@ -9,5 +9,5 @@ export default defineConfig({
   // prefix. Replace "portfolio" with your repo's exact name (case-sensitive).
   // If this site instead lives at a user/org root page (a repo literally
   // named "<user>.github.io"), delete this line — it should stay "/".
-  base: "/portfolio/",
+  base: "/Colin-Hoar-Portfolio/",
 })
