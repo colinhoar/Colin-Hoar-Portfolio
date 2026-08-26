@@ -1,29 +1,11 @@
-/**
- * PROJECT DATA
- * ------------------------------------------------------------
- * This array powers both the Projects grid AND the project
- * detail modal that opens when a card is clicked. To add a
- * project, copy one of the objects below and fill in your own
- * details — no component code needs to change.
- *
- * To remove a project, delete its object from the array.
- * Order in the array is the order projects appear on the page.
- *
- * IMAGES: place project screenshots in `src/assets/projects/`
- * and import them at the top of this file, the same way the
- * placeholder images are imported below.
- *
- * See the "Adding a project" guide in the README for a full
- * walkthrough of every field below, including the optional
- * `details` object that powers the modal.
- */
-
 import software_engineering from "../assets/projects/Software_Engineering_Cover_Image.png";
 import creative_coding from "../assets/projects/Creative_Coding_Cover_Image.png";
 import financial_literacy from "../assets/projects/Financial_Literacy_Cover_Image.png";
 import pizza_jam from "../assets/projects/Pizza_Jam_Cover_Image.png";
 import pizza_jam_1 from "../assets/projects/pizza_jam_1.jpg";
 import pizza_jam_2 from "../assets/projects/pizza_jam_2.jpg";
+import physarum from "../assets/projects/Physarum_Cover_Image.png";
+import computer_graphics from "../assets/projects/Computer_Graphic_Cover_Image.png"
 
 /** A single labeled link shown as a button in the project modal. */
 export interface ProjectLink {
@@ -97,7 +79,7 @@ export const projects: Project[] = [
       pdfs: [
         {
           label: "Project Report",
-          url: "/assets/projects/Software_Engineering_Final_Report.pdf",
+          url: `${import.meta.env.BASE_URL}assets/projects/Software_Engineering_Final_Report.pdf`,
         },
       ],
     },
@@ -133,7 +115,7 @@ export const projects: Project[] = [
       ],
       pdfs: [
         {
-          label: "Project Report", url: "/assets/projects/AssessingFinancialLiteracyMQP.pdf",
+          label: "Project Report", url: `${import.meta.env.BASE_URL}assets/projects/AssessingFinancialLiteracyMQP.pdf`,
         },
       ],
     },
@@ -165,6 +147,61 @@ export const projects: Project[] = [
     },
   },
   {
+    title: "Physarum Slime Mold MIDI Simulation",
+    description:
+      "A Physarum slime mold WGSL simulation with MIDI input controls to influence simulation constraints and visual effects.",
+    image: physarum,
+    technologies: ["WebGPU", "Javascript", "WGSL", "Web MIDI API"],
+    details: {
+      overview:
+        "This project is a GPU-accelerated Physarum slime mold simulation, built as a final project for a Graphics, Simulations, and Aesthetics course, that can be controlled live using a MIDI device.",
+      paragraphs: [
+        "I built the simulation using WebGPU compute shaders to model agent-based slime mold behavior, then layered in real-time interactivity by integrating the Web MIDI API to read input from an AKAI MPK Mini Mk II. The knobs, keys, and pads map to different simulation and rendering parameters, allowing the visual to be performed and manipulated live. I also implemented a multi-pass post-processing pipeline, including bloom, chromatic aberration, and feedback trails, to give the simulation a bioluminescent, organic look.",
+        "The GitHub, a live demo, the project itself, and other information about this project can be found at the GitHub link below. All contents of this project are in the Final Project portion of the README. Other projects from this course can also be found at this same GitHub link."
+      ],
+      features: [
+        "Physarum slime mold simulation running on WebGPU",
+        "Live MIDI controls",
+        "Knob-controlled simulation parameters",
+        "Keyboard-based momentary parameter overrides",
+        "Pad-triggered color palette switching and agent respawn patterns",
+        "Multi-pass post-processing pipeline"
+      ],
+      links: [
+        { label: "Course GitHub", url: "https://github.com/colinhoar/Colin-Hoar-IMGD-CS-4300-Graphics-Simulation-and-Aesthetics" },
+      ],
+    },
+  },
+  {
+    title: "WebGPU Earth Animation",
+    description:
+      "A WebGL animated 3D scene featuring a rotating Earth, an orbiting satellite model, an animated UFO model, shader lighting, and texturing.",
+    image: computer_graphics,
+    technologies: ["WebGL", "GLSL", "JavaScript"],
+    details: {
+      overview:
+        "This project is a WebGL scene combining a rotating Earth, an orbiting satellite, and an animated UFO, built as a final project for a Computer Graphics course.",
+      paragraphs: [
+        "I implemented vertex and fragment shaders to render the scene, including Phong lighting (ambient, diffuse, and specular) for the Earth and UFO, a reflective glass material for the UFO's dome using refraction mapping, and a partially-reflective satellite surface using a reflection map and cube-mapped environment. The Earth's sphere was generated by recursively subdividing a tetrahedron, with custom UV mapping to avoid texture seams at the poles. The satellite's travel path was created using Chaikin's corner-cutting algorithm to smooth a polygon into a curved loop, which the satellite then animates along. OBJ/MTL model loading was supplied and used to bring in the UFO and satellite meshes, and a skybox using a cube map is centered on the camera at all times.",
+        "The GitHub repository below contains files copied from the original repository for portfolio purposes. To view it locally, you must run it first."
+      ],
+      features: [
+        "Recursive tetrahedron subdivision",
+        "Phong lighting model (ambient, diffuse, specular)",
+        "Refractive glass shader using cube-map refraction",
+        "Reflective surface via a reflection map",
+        "Skybox rendering with a camera-following cube map",
+        "Chaikin's algorithm-based curve generation for path following",
+        "OBJ/MTL model loading and rendering",
+        "UFO spotlight",
+        "Interactive camera zoom and toggleable lighting/orbit controls via keyboard input"
+      ],
+      links: [
+        { label: "GitHub", url: "https://github.com/colinhoar/Earth-Web-Animation" },
+      ],
+    },
+  },
+  {
     title: "Creative Coding Course Design",
     description:
         "A creative coding course designed to help STEM students explore artistic expression through programming, combining hands-on projects with active learning and creative problem-solving.",
@@ -190,7 +227,7 @@ export const projects: Project[] = [
       pdfs: [
         {
           label: "Project Report",
-          url: "/assets/projects/IQP-ZurichA24-CreativeCoding.docx.pdf",
+          url: `${import.meta.env.BASE_URL}assets/projects/IQP-ZurichA24-CreativeCoding.docx.pdf`,
         },
       ],
     },
